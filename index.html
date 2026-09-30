@@ -1,1 +1,574 @@
+<!DOCTYPE html>
+<html lang="es">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
 
+    <title>IMM Audiovisuales | Streaming, Vídeo y Fotografía</title>
+
+    <meta name="description" content="IMM Audiovisuales. Streaming deportivo, retransmisiones en directo, vídeo, fotografía y realización audiovisual.">
+
+    <style>
+        * {
+            margin: 0;
+            padding: 0;
+            box-sizing: border-box;
+        }
+
+        html {
+            scroll-behavior: smooth;
+        }
+
+        body {
+            font-family: Arial, Helvetica, sans-serif;
+            background: #0b0b0b;
+            color: #ffffff;
+            line-height: 1.6;
+        }
+
+        /* NAVEGACIÓN */
+
+        nav {
+            position: fixed;
+            top: 0;
+            width: 100%;
+            z-index: 1000;
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+            padding: 20px 6%;
+            background: rgba(0,0,0,0.85);
+            backdrop-filter: blur(10px);
+        }
+
+        .logo {
+            font-size: 24px;
+            font-weight: 800;
+            letter-spacing: 2px;
+        }
+
+        .logo span {
+            color: #d9ff00;
+        }
+
+        nav ul {
+            display: flex;
+            gap: 30px;
+            list-style: none;
+        }
+
+        nav a {
+            color: white;
+            text-decoration: none;
+            font-size: 14px;
+            font-weight: bold;
+            transition: 0.3s;
+        }
+
+        nav a:hover {
+            color: #d9ff00;
+        }
+
+        /* HERO */
+
+        .hero {
+            min-height: 100vh;
+            display: flex;
+            align-items: center;
+            padding: 120px 8% 80px;
+            background:
+                radial-gradient(circle at 80% 30%, rgba(217,255,0,0.12), transparent 30%),
+                linear-gradient(135deg, #050505, #151515);
+        }
+
+        .hero-content {
+            max-width: 900px;
+        }
+
+        .tag {
+            color: #d9ff00;
+            font-size: 14px;
+            font-weight: bold;
+            letter-spacing: 3px;
+            margin-bottom: 20px;
+        }
+
+        .hero h1 {
+            font-size: clamp(50px, 8vw, 100px);
+            line-height: 0.95;
+            margin-bottom: 30px;
+        }
+
+        .hero h1 span {
+            color: #d9ff00;
+        }
+
+        .hero p {
+            max-width: 650px;
+            font-size: 20px;
+            color: #cfcfcf;
+            margin-bottom: 40px;
+        }
+
+        .buttons {
+            display: flex;
+            gap: 15px;
+            flex-wrap: wrap;
+        }
+
+        .btn {
+            padding: 15px 25px;
+            text-decoration: none;
+            font-weight: bold;
+            border: 1px solid #d9ff00;
+            transition: 0.3s;
+        }
+
+        .btn-primary {
+            background: #d9ff00;
+            color: #000;
+        }
+
+        .btn-primary:hover {
+            background: white;
+            border-color: white;
+        }
+
+        .btn-secondary {
+            color: white;
+        }
+
+        .btn-secondary:hover {
+            background: white;
+            color: black;
+        }
+
+        /* SECCIONES */
+
+        section {
+            padding: 100px 8%;
+        }
+
+        .section-title {
+            margin-bottom: 50px;
+        }
+
+        .section-title p {
+            color: #d9ff00;
+            font-size: 13px;
+            letter-spacing: 3px;
+            font-weight: bold;
+            margin-bottom: 10px;
+        }
+
+        .section-title h2 {
+            font-size: clamp(35px, 5vw, 60px);
+        }
+
+        /* SERVICIOS */
+
+        .services {
+            background: #111;
+        }
+
+        .services-grid {
+            display: grid;
+            grid-template-columns: repeat(3, 1fr);
+            gap: 20px;
+        }
+
+        .service {
+            background: #191919;
+            padding: 35px;
+            min-height: 230px;
+            border: 1px solid #292929;
+            transition: 0.3s;
+        }
+
+        .service:hover {
+            transform: translateY(-8px);
+            border-color: #d9ff00;
+        }
+
+        .service-number {
+            color: #d9ff00;
+            font-size: 13px;
+            font-weight: bold;
+        }
+
+        .service h3 {
+            font-size: 25px;
+            margin: 35px 0 15px;
+        }
+
+        .service p {
+            color: #aaa;
+        }
+
+        /* PROYECTOS */
+
+        .projects-grid {
+            display: grid;
+            grid-template-columns: repeat(3, 1fr);
+            gap: 20px;
+        }
+
+        .project {
+            min-height: 300px;
+            background: linear-gradient(135deg, #222, #111);
+            border: 1px solid #292929;
+            display: flex;
+            align-items: flex-end;
+            padding: 25px;
+            transition: 0.3s;
+        }
+
+        .project:hover {
+            transform: scale(1.02);
+            border-color: #d9ff00;
+        }
+
+        .project span {
+            color: #d9ff00;
+            font-size: 12px;
+            font-weight: bold;
+        }
+
+        .project h3 {
+            margin-top: 5px;
+            font-size: 24px;
+        }
+
+        /* SOBRE */
+
+        .about {
+            background: #151515;
+        }
+
+        .about-content {
+            max-width: 850px;
+        }
+
+        .about-content p {
+            font-size: 21px;
+            color: #cfcfcf;
+            margin-bottom: 25px;
+        }
+
+        /* CONTACTO */
+
+        .contact {
+            text-align: center;
+            background: #d9ff00;
+            color: #000;
+        }
+
+        .contact h2 {
+            font-size: clamp(40px, 6vw, 75px);
+            line-height: 1;
+            margin-bottom: 25px;
+        }
+
+        .contact p {
+            font-size: 20px;
+            margin-bottom: 35px;
+        }
+
+        .contact .btn {
+            border-color: #000;
+            color: #000;
+        }
+
+        .contact .btn:hover {
+            background: #000;
+            color: white;
+        }
+
+        /* FOOTER */
+
+        footer {
+            padding: 35px 8%;
+            background: #050505;
+            display: flex;
+            justify-content: space-between;
+            gap: 20px;
+            flex-wrap: wrap;
+            color: #888;
+            font-size: 14px;
+        }
+
+        /* MÓVIL */
+
+        @media (max-width: 800px) {
+
+            nav {
+                padding: 18px 5%;
+            }
+
+            nav ul {
+                display: none;
+            }
+
+            section {
+                padding: 80px 6%;
+            }
+
+            .services-grid,
+            .projects-grid {
+                grid-template-columns: 1fr;
+            }
+
+            .hero {
+                padding: 120px 6% 70px;
+            }
+
+            .hero p {
+                font-size: 17px;
+            }
+
+            footer {
+                flex-direction: column;
+            }
+        }
+    </style>
+</head>
+
+<body>
+
+    <!-- NAVEGACIÓN -->
+
+    <nav>
+        <div class="logo">IMM<span>.</span></div>
+
+        <ul>
+            <li><a href="#inicio">INICIO</a></li>
+            <li><a href="#servicios">SERVICIOS</a></li>
+            <li><a href="#proyectos">PROYECTOS</a></li>
+            <li><a href="#sobre">SOBRE IMM</a></li>
+            <li><a href="#contacto">CONTACTO</a></li>
+        </ul>
+    </nav>
+
+    <!-- HERO -->
+
+    <header class="hero" id="inicio">
+
+        <div class="hero-content">
+
+            <div class="tag">
+                IMM AUDIOVISUALES
+            </div>
+
+            <h1>
+                HACEMOS QUE<br>
+                TU EVENTO<br>
+                <span>SE VEA.</span>
+            </h1>
+
+            <p>
+                Streaming, retransmisiones deportivas, vídeo, fotografía
+                y realización audiovisual para convertir tus proyectos
+                en experiencias.
+            </p>
+
+            <div class="buttons">
+
+                <a href="#proyectos" class="btn btn-primary">
+                    VER PROYECTOS
+                </a>
+
+                <a href="#contacto" class="btn btn-secondary">
+                    SOLICITAR PRESUPUESTO
+                </a>
+
+            </div>
+
+        </div>
+
+    </header>
+
+    <!-- SERVICIOS -->
+
+    <section class="services" id="servicios">
+
+        <div class="section-title">
+            <p>QUÉ HACEMOS</p>
+            <h2>Nuestros servicios</h2>
+        </div>
+
+        <div class="services-grid">
+
+            <div class="service">
+                <div class="service-number">01</div>
+                <h3>Streaming</h3>
+                <p>
+                    Retransmisiones en directo para eventos,
+                    espectáculos y contenidos digitales.
+                </p>
+            </div>
+
+            <div class="service">
+                <div class="service-number">02</div>
+                <h3>Streaming deportivo</h3>
+                <p>
+                    Retransmisión de partidos con cámaras,
+                    sonido, comentaristas y grafismo.
+                </p>
+            </div>
+
+            <div class="service">
+                <div class="service-number">03</div>
+                <h3>Vídeo</h3>
+                <p>
+                    Grabación y edición de vídeos para eventos,
+                    empresas, clubes y proyectos personales.
+                </p>
+            </div>
+
+            <div class="service">
+                <div class="service-number">04</div>
+                <h3>Fotografía</h3>
+                <p>
+                    Cobertura fotográfica de eventos deportivos,
+                    culturales y sociales.
+                </p>
+            </div>
+
+            <div class="service">
+                <div class="service-number">05</div>
+                <h3>Realización</h3>
+                <p>
+                    Realización multicámara y control técnico
+                    para retransmisiones profesionales.
+                </p>
+            </div>
+
+            <div class="service">
+                <div class="service-number">06</div>
+                <h3>Grafismo</h3>
+                <p>
+                    Grafismos, overlays, pantallas y elementos
+                    visuales para retransmisiones y eventos.
+                </p>
+            </div>
+
+        </div>
+
+    </section>
+
+    <!-- PROYECTOS -->
+
+    <section id="proyectos">
+
+        <div class="section-title">
+            <p>PORTFOLIO</p>
+            <h2>Proyectos</h2>
+        </div>
+
+        <div class="projects-grid">
+
+            <div class="project">
+                <div>
+                    <span>DEPORTE</span>
+                    <h3>Retransmisiones de fútbol</h3>
+                </div>
+            </div>
+
+            <div class="project">
+                <div>
+                    <span>EVENTOS</span>
+                    <h3>Eventos y espectáculos</h3>
+                </div>
+            </div>
+
+            <div class="project">
+                <div>
+                    <span>CULTURA</span>
+                    <h3>Eventos culturales</h3>
+                </div>
+            </div>
+
+            <div class="project">
+                <div>
+                    <span>PRODUCCIÓN</span>
+                    <h3>Realización multicámara</h3>
+                </div>
+            </div>
+
+            <div class="project">
+                <div>
+                    <span>VÍDEO</span>
+                    <h3>Producción audiovisual</h3>
+                </div>
+            </div>
+
+            <div class="project">
+                <div>
+                    <span>FOTOGRAFÍA</span>
+                    <h3>Cobertura de eventos</h3>
+                </div>
+            </div>
+
+        </div>
+
+    </section>
+
+    <!-- SOBRE IMM -->
+
+    <section class="about" id="sobre">
+
+        <div class="section-title">
+            <p>QUIÉNES SOMOS</p>
+            <h2>IMM Audiovisuales</h2>
+        </div>
+
+        <div class="about-content">
+
+            <p>
+                IMM Audiovisuales nace con el objetivo de ofrecer
+                soluciones audiovisuales profesionales para eventos,
+                deporte y proyectos digitales.
+            </p>
+
+            <p>
+                Trabajamos desde la grabación y edición hasta la
+                realización y retransmisión en directo, adaptándonos
+                a las necesidades de cada proyecto.
+            </p>
+
+        </div>
+
+    </section>
+
+    <!-- CONTACTO -->
+
+    <section class="contact" id="contacto">
+
+        <h2>¿TIENES UN PROYECTO?</h2>
+
+        <p>
+            Cuéntanos qué necesitas y hablamos.
+        </p>
+
+        <a href="mailto:info@immaudiovisuales.es" class="btn">
+            CONTACTAR
+        </a>
+
+    </section>
+
+    <!-- FOOTER -->
+
+    <footer>
+
+        <div>
+            © 2026 IMM Audiovisuales
+        </div>
+
+        <div>
+            Streaming · Vídeo · Fotografía · Realización
+        </div>
+
+    </footer>
+
+</body>
+</html>
